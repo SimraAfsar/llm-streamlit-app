@@ -1,2 +1,6 @@
-openai
 streamlit
+openai
+datasets
+pandas
+pyarrow
+numpy
