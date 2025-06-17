@@ -1,0 +1,142 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "sample_idx": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "dataset_name": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "domain": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "lang": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "topic": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "question": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "ground_truth": {
+      "long_answers": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "short_answers": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "structured_long_answers": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "structured_short_answers": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      }
+    },
+    "system_response": {
+      "long_answer": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "short_answer": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "structured_long_answer": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "structured_short_answer": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "prompt": [
+      {
+        "answering": {
+          "long_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "short_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          }
+        },
+        "model": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "structuring": {
+          "long_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "method": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "short_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          }
+        }
+      }
+    ],
+    "evaluation": {
+      "metrics": [
+        {
+          "metric": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "Sequence"
+          },
+          "metric_value": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "Sequence"
+          }
+        }
+      ]
+    },
+    "source": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}
