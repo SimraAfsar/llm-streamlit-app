@@ -13,7 +13,7 @@ try:
     dataset_dict = load_from_disk("question_answering")
     dataset = dataset_dict["train"]  # access the 'train' split
     small_dataset = dataset.select(range(1000))
-)
+
 except Exception as e:
     st.error("Failed to load dataset. Make sure 'question_answering' folder exists.")
     st.stop()
