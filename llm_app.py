@@ -8,9 +8,9 @@ from datasets import load_dataset
 api_key = st.secrets["api_key"]
 client = openai.OpenAI(api_key=api_key)
 
-# Load dataset
-dataset = load_dataset("squad")
-small_dataset = dataset['train'].select(range(1000))  # smaller slice for speed
+from datasets import load_from_disk
+dataset = load_from_disk(r"C:\Users\Simra\OneDrive - Liv-ex\ELOQUENCE\v1.0\question_answering")
+small_dataset = dataset.select(range(1000))
 
 # Search function with fixed iteration
 def search_dataset(query, dataset):
