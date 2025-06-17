@@ -15,10 +15,12 @@ small_dataset = dataset.select(range(1000))
 # Search function with fixed iteration
 def search_dataset(query, dataset):
     results = []
-    for i in range(len(dataset)):
-        example = dataset[i]
-        if query.lower() in example['question'].lower():
-            results.append(example['context'])
+    for example in dataset:
+        question = example.get('question')
+        context = example.get('context')
+
+        if question and query.lower() in question.lower():
+            results.append(context)
     return results[:1]
 
 # Initialize session state
