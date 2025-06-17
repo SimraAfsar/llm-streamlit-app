@@ -10,7 +10,7 @@ client = openai.OpenAI(api_key=api_key)
 
 # Load local dataset from disk
 try:
-    dataset_dict = load_from_disk(r"C:/Users/Simra/OneDrive - Liv-ex/ELOQUENCE/v1.0/question_answering")
+    dataset_dict = load_dataset()("question_answering")
     dataset = dataset_dict["train"]  # access the 'train' split
     small_dataset = dataset.select(range(1000))
 
