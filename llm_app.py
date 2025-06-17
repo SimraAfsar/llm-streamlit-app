@@ -8,12 +8,17 @@ from datasets import load_from_disk
 api_key = st.secrets["api_key"]
 client = openai.OpenAI(api_key=api_key)
 
-# Load local dataset from folder
+# Load local dataset from disk
 try:
-    dataset = load_from_disk("question_answering")  # Make sure this folder is in the same directory as your script
+    dataset = load_from_disk("question_answering")  # folder must be present next to app
     small_dataset = dataset.select(range(1000))
+
+    # Show a sample row from ELOQUENCE to confirm
+    st.write("Sample ELOQUENCE record:")
+    st.write(small_dataset[0])
+
 except Exception as e:
-    st.error("Failed to load dataset. Make sure the 'question_answering' folder exists in the same directory.")
+    st.error("Failed to load dataset. Make sure 'question_answering' folder exists and is correctly structured.")
     st.stop()
 
 # Function to retrieve relevant context
@@ -21,22 +26,23 @@ def search_dataset(query, dataset):
     results = []
     for example in dataset:
         try:
-            question = example["question"]
-            context = example["context"]
+            question = example.get('question', '')
+            context = example.get('context', '')
+
             if query.lower() in question.lower():
                 results.append(context)
         except Exception:
             continue
     return results[:1]
 
-# Streamlit session state setup
+# Streamlit session state
 if "history" not in st.session_state:
     st.session_state.history = []
 
 if "llm_response" not in st.session_state:
     st.session_state.llm_response = ""
 
-# UI
+# Title and input
 st.title("Simra's LLM Assistant")
 question = st.text_input("Enter your question:")
 
@@ -44,6 +50,8 @@ if st.button("Ask"):
     retrieved_context = search_dataset(question, small_dataset)
 
     if retrieved_context:
+        st.write("Context Retrieved:")
+        st.write(retrieved_context[0])
         full_prompt = f"Context: {retrieved_context[0]}\n\nQuestion: {question}"
     else:
         full_prompt = question
@@ -58,7 +66,7 @@ if st.button("Ask"):
         st.error("LLM request failed. Check your API key and model access.")
         st.stop()
 
-# Show LLM response
+# Display LLM output
 if st.session_state.llm_response:
     st.write("LLM Response:")
     st.write(st.session_state.llm_response)
