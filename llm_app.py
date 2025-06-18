@@ -28,7 +28,7 @@ def search_dataset(query, dataset):
             results.append(context)
     return results[:1]
 
-# Initialize session state
+# Initialise session state
 if "history" not in st.session_state:
     st.session_state.history = []
 
