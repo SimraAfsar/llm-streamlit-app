@@ -22,11 +22,16 @@ except Exception:
 def search_dataset(query, dataset):
     results = []
     for example in dataset:
-        question = example.get("question", "")
-        context = example.get("context", "")
-        if query.lower() in question.lower():
-            results.append(context)
+        try:
+            question = example.get("question")
+            context = example.get("context")
+
+            if question and context and query.lower() in question.lower():
+                results.append(context)
+        except Exception:
+            continue
     return results[:1]
+
 
 # Initialise session state
 if "history" not in st.session_state:
